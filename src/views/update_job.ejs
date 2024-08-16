@@ -1,0 +1,140 @@
+<div>
+  <div class="container p-3 mx-auto w-50 form-box my-5 rounded-md">
+    <h2 style="color: #181642" class="text-center mb-3">Update Job</h2>
+    <form action="/jobs/update/<%=job.id%>" method="post">
+        <input
+        type="hidden"
+        class="form-label"
+        id="id"
+        name="id"
+        value="<%=job.id%>"
+      />  
+      <div class="input-group mb-3">
+        <select
+          required=""
+          name="job_category"
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option disabled="" value="Tech">
+            select new job category
+          </option>
+          <option value="Tech" <% if(job.job_category == "Tech") {%> selected="" <% } %>> Tech</option>
+          <option value="Non-Tech" <% if(job.job_category == "Non-Tech") {%> selected="" <% } %>>Non Tech</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <select
+          required=""
+          name="job_designation"
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option value="JavaScript Developer" selected="" disabled="">
+            select new job designation
+          </option>
+          <option value="HR" <% if(job.job_designation == "HR") {%> selected="" <% } %>>HR</option>
+          <option value="SDE" <% if(job.job_designation == "SDE") {%> selected="" <% } %>>SDE</option>
+          <option value="DevOps" <% if(job.job_designation == "DevOps") {%> selected="" <% } %>>DevOps</option>
+          <option value="MERN Developer" <% if(job.job_designation == "MERN Developer") {%> selected="" <% } %>>MERN Developer</option>
+          <option value="MEAN Developer" <% if(job.job_designation == "MEAN Developer") {%> selected="" <% } %>>MEAN Developer</option>
+          <option value="JAVA Developer" <% if(job.job_designation == "JAVA Developer") {%> selected="" <% } %>>JAVA Developer</option>
+          <option value="Front-End Developer" <% if(job.job_designation == "Front-End Developer") {%> selected="" <% } %>>Front-End Developer</option>
+          <option value="Back-End Developer" <% if(job.job_designation == "Back-End Developer") {%> selected="" <% } %>>Back-End Developer</option>
+          <option value="Full-Stack Developer" <% if(job.job_designation == "Full-Stack Developer") {%> selected="" <% } %>>Full-Stack Developer</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="basic-url" class="form-label">Enter job location</label>
+        <div class="input-group">
+          <input
+            value="<%=job.job_location%>"
+            required=""
+            name="job_location"
+            type="text"
+            class="form-control"
+            id="basic-url"
+            aria-describedby="basic-addon3 basic-addon4"
+          />
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Company Name</span>
+        <input
+          value="<%=job.company_name%>"
+          required=""
+          name="company_name"
+          type="text"
+          class="form-control"
+          aria-label="Amount (to the nearest dollar)"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          value="<%=job.salary%>"
+          required=""
+          name="salary"
+          type="text"
+          class="form-control"
+          placeholder="enter salary"
+          aria-label="Username"
+        />
+        <span class="input-group-text">Total Positions</span>
+        <input
+          value="<%=job.number_of_openings%>"
+          required=""
+          name="number_of_openings"
+          type="number"
+          class="form-control"
+          placeholder="total no of openings"
+          aria-label="Server"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <select
+          required=""
+          multiple=""
+          name="skills_required"
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option selected="" disabled="">
+            select skills required for this job
+          </option>
+          <option value="React" <%if(job.skills_required.includes("React")){ %> selected = "" <%}%>>React</option>
+          <option value="NodeJs" <%if(job.skills_required.includes("NodeJs")){ %> selected = "" <%}%>>NodeJs</option>
+          <option value="Angular" <%if(job.skills_required.includes("Angular")){ %> selected = "" <%}%>>Angular</option>
+          <option value="MongoDB" <%if(job.skills_required.includes("MongoDB")){ %> selected = "" <%}%>>MongoDB</option>
+          <option value="SQL" <%if(job.skills_required.includes("SQL")){ %> selected = "" <%}%>>SQL</option>
+          <option value="Azure" <%if(job.skills_required.includes("Azure")){ %> selected = "" <%}%>>Azure</option>
+          <option value="Docker" <%if(job.skills_required.includes("Docker")){ %> selected = "" <%}%>>Docker</option>
+          <option value="Kubernetes" <%if(job.skills_required.includes("Kubernetes")){ %> selected = "" <%}%>>Kubernetes</option>
+          <option value="Express" <%if(job.skills_required.includes("Express")){ %> selected = "" <%}%>>Express</option>
+          <option value="Java" <%if(job.skills_required.includes("Java")){ %> selected = "" <%}%>>Java</option>
+          <option value="SpringBoot" <%if(job.skills_required.includes("SpringBoot")){ %> selected = "" <%}%>>SpringBoot</option>
+          <option value="C++" <%if(job.skills_required.includes("C++")){ %> selected = "" <%}%>>C++</option>
+          <option value="Data Structures &amp; Algo" <%if(job.skills_required.includes("Data Structures & Algo")){ %> selected = "" <%}%>>
+            Data Structures &amp; Algo
+          </option>
+        </select>
+        <span class="input-group-text">Applly By</span>
+        <input
+          value="<%=new Date(job.apply_by).toISOString().split('T')[0]
+          %>"
+          name="apply_by"
+          type="date"
+          class="form-control"
+          placeholder="total no of openings"
+          aria-label="Server"
+        />
+      </div>
+      <button class="w-100 mb-3 mt-2 btn btn-md btn-success" type="submit">
+        Update
+      </button>
+    </form>
+  </div>
+</div>
