@@ -1,0 +1,1 @@
+docker container run -it -p 8081:3000 --name mini_project_nodejs --mount type=bind,source=$(pwd),target=/app node bash 
